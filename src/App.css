@@ -1,3 +1,12 @@
+.container {
+  background: linear-gradient(90deg, rgb(251, 251, 255) 0%, rgb(223, 245, 242) 35%, rgb(197, 235, 243) 100%);
+  border: 5px dotted rgb(49, 122, 128);
+  border-radius: 50px;
+}
+
+
+
+
 .App-header {
   margin: 30px 0;
   text-align: center;
@@ -15,7 +24,8 @@
 }
 
 .text-center {
-  color:rgb(94, 170, 145);
+  color:rgb(133, 180, 164);
   margin: 60px 0;
-  font-size: 20px;
+  font-size: 30px;
+  font-weight: bold;
 }
