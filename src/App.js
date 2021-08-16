@@ -11,7 +11,7 @@ export default function App() {
       alt="logo"/>
       </header>
       <main>
-        <Dictionary />
+        <Dictionary/>
       </main>
       <footer className="text-center">
         <small>Coded by Márcia Castro</small></footer>
