@@ -10,7 +10,7 @@ export default function App() {
       React Dictionary App
       </header>
       <main>
-        <Dictionary/>
+        <Dictionary defaultKeyword="magic" />
       </main>
       <footer className="text-center">
         <small>
