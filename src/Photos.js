@@ -1,27 +1,29 @@
 import React from "react";
+import "./Photos.css";
 
 
 export default function Photos(props) {
-   
-
     if (props.photos) {
-        console.log(props.photos);
-        return(
+        return (
             <section className="Photos">
-                {props.photos.map(function(photo, index) {
-                    
-                }
-                
-                )}
-
-            </section>
-        )
-
-
+                <div className="row">
+                {props.photos.map(function (photo, index) {
+                    return (
+                        <div className="col-4" key={index}>
+                        <a href={photo.src.original}  rel="noreferrer" target="_blank">  
+                        <img src={photo.src.landscape}   
+                        className="img-fluid"  /> 
+                        </a>  
+                    </div>    
+                );
+                })}
+            </div>
+    </section>
+       
+    );
 
     } else {
         return null;
     }
-
-   
+  
 }
