@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import Results from "./Results";
+import Photos from "./Photos";
 import "./Dictionary.css";
 
 
@@ -8,19 +9,33 @@ export default function Dictionary(props)   {
     let [keyword, setKeyword] = useState(props.defaultKeyword);
     let [results, setResults] = useState(null);
     let [loaded, setLoaded] = useState(false);
+    let [photos, setPhotos] = useState(null);
 
     function handleResponse(response) {
         setResults(response.data[0]);
+    }
+
+    function handlePexelsResponse(response) {
+        setPhotos(response.data.photos);
     }
 
 
     function search() {
         let apiURL = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
         axios.get(apiURL).then(handleResponse);
+
+        let pexelsApiKey = "563492ad6f91700001000001a7e60a6360b8432093f625e065c24391";
+        let pexelsApiURL =`https://api.pexels.com/v1/search?query=${keyword}&per_page=1`;
+        let headers = {Authorization: `Bearer ${pexelsApiKey}` };
+
+        axios.get(pexelsApiURL, {headers: headers }).then(handlePexelsResponse);
        
     }
+
     
-    
+
+
+
     function handleSubmit(event) {
         event.preventDefault();
         search();
@@ -48,10 +63,11 @@ export default function Dictionary(props)   {
                 defaultValue={props.defaultKeyword} />
             </form>
             <div className="hint">
-                suggested words: magic, night, summer, twilight...
+                suggested words: wand, spell, potion, enchantment...
             </div>
             </section>
             <Results results={results} />
+            <Photos photos={photos} />
             </div>
             );
 
